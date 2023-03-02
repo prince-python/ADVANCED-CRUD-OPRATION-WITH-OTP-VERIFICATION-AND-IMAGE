@@ -22,7 +22,7 @@
     <div class="container-fluid border border-dark  row mt-5 rounded bg-warning" style="width:50%; 
         background-image: url(https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569__480.jpg);
         background-repeat: no-repeat ; background-size: cover;">
-      <form action="/" method="post">
+      <form action="/image_data/" method="post"  enctype="multipart/form-data">
         {% csrf_token %}
         <div class="col-6  mb-5 mt-5 text-white">
           <div class="mb-3 ">
@@ -42,7 +42,7 @@
           
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">IMAGE</label>
-            <input type="file" class="btn btn-outline-warning text-white form-control" name="img" required>
+            <input type="file" class="btn btn-outline-warning text-white form-control" accept="image/*" name="img" required>
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>

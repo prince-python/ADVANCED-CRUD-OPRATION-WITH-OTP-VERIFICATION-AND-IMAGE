@@ -8,12 +8,15 @@ from django.contrib import messages
 
 
 def index(request):
+    return render(request,"home.html")
+
+def image_data(request):
     if request.method == 'POST' :
-        name=request.POST['name']
-        email=request.POST['email']
-        mobile=request.POST['mobile']
-        img = request.POST['img']
-        pwd=request.POST['pwd']
+        name=request.POST.get('name')
+        email=request.POST.get('email')
+        mobile=request.POST.get('mobile')
+        img = request.FILES.get('img')
+        pwd=request.POST.get('pwd')
         if Data.objects.filter(email=email).exists():
             messages.success(request,'EMAIL ALREADY EXISTS')
             return redirect('/')
@@ -25,8 +28,8 @@ def index(request):
             Data.objects.create(name=name,mobile=mobile,pwd=pwd,img=img,email=email)
             messages.success(request,'successfully registered')
             return render(request,'login.html')
-    else:
-        return render(request,'home.html')
+    # else:
+    #     return render(request,'home.html')
 
 
 
@@ -79,3 +82,7 @@ def verifyotp(request):
     else:
         messages.error(request,'WRONG OTP PLEASE TRY AGAIN')
         return render(request,'verify.html')
+    
+def datashow(request):
+    d=Data.objects.all()
+    return render(request,'show.html',{'d':d})

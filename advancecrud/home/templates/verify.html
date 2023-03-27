@@ -23,7 +23,7 @@
   <center>
     <center>
       <div class="container-fluid bg-warning text-dark mt-5 " style="width: 50%;">
-        <form action="verifyotp" method="post">
+        <form action="{% url 'verifyotp' %}" method="post">
           {% csrf_token %}
           {% for i in d %}
           <input type="hidden" value="{{ i.name }}" name="name">

@@ -19,7 +19,7 @@
     {% endif %}
   </span>
   <div>
-    <form action="login" method="post">
+    <form action="{% url 'login' %}" method="post">
       <div class="mb-3">
         {% csrf_token %}
         <label for="exampleInputEmail1" class="form-label">Email address</label>
